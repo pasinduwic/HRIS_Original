@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addAlertDetails,
   addModalTogal,
-  setRefresh
+  setRefresh,
 } from "../../redux/features/StatusVar";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -18,7 +18,7 @@ interface officeI {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  location: yup.string().required()
+  location: yup.string().required(),
 });
 
 const AddOffice = () => {
@@ -53,7 +53,7 @@ const AddOffice = () => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -62,7 +62,7 @@ const AddOffice = () => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -70,7 +70,7 @@ const AddOffice = () => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
       dispatch(setRefresh(!refreshData));
@@ -79,7 +79,7 @@ const AddOffice = () => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -114,7 +114,7 @@ const AddOffice = () => {
           validationSchema={validationSchema}
           initialValues={{
             name: "",
-            location: ""
+            location: "",
           }}
           onSubmit={(values) => {
             handleFormSubmit();
@@ -127,7 +127,7 @@ const AddOffice = () => {
             values,
             touched,
             isValid,
-            errors
+            errors,
           }) => (
             <Form noValidate>
               <Form.Group>
@@ -163,15 +163,12 @@ const AddOffice = () => {
                 </Form.Control.Feedback>
               </Form.Group>
               <Modal.Footer>
-                <Button
-                  variant="secondary"
-                  onClick={() => dispatch(addModalTogal(false))}
-                >
+                <Button onClick={() => dispatch(addModalTogal(false))}>
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {/* <Button type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Add"}
-                </Button>
+                </Button> */}
               </Modal.Footer>
             </Form>
           )}

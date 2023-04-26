@@ -184,12 +184,12 @@ const UpdateAttendance = (data: any) => {
           </Form.Group>
           <Modal.Footer>
             <Button
-              variant="secondary"
+              variant="text"
               onClick={() => dispatch(updateModalTogal(false))}
             >
               Close
             </Button>
-            <Button variant="primary" type="submit" onClick={handelSubmit}>
+            <Button  type="submit" onClick={handelSubmit}>
               {loader ? <Spinner animation="border" size="sm" /> : "Update"}
             </Button>
           </Modal.Footer>

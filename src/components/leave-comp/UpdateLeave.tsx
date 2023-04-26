@@ -7,7 +7,7 @@ import { addUpdateData } from "../../redux/features/GlobalData";
 import {
   addAlertDetails,
   setRefresh,
-  updateModalTogal
+  updateModalTogal,
 } from "../../redux/features/StatusVar";
 import moment from "moment";
 
@@ -60,7 +60,7 @@ const UpdateLeave = (data: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -69,7 +69,7 @@ const UpdateLeave = (data: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -78,7 +78,7 @@ const UpdateLeave = (data: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item updated successfully!"
+          message: "Item updated successfully!",
         })
       );
       dispatch(setRefresh(!refreshData));
@@ -87,7 +87,7 @@ const UpdateLeave = (data: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -250,13 +250,10 @@ const UpdateLeave = (data: any) => {
             </Form.Select>
           </Form.Group>
           <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => dispatch(updateModalTogal(false))}
-            >
+            <Button onClick={() => dispatch(updateModalTogal(false))}>
               Close
             </Button>
-            <Button variant="primary" type="submit" onClick={handelSubmit}>
+            <Button type="submit" onClick={handelSubmit}>
               {loader ? <Spinner animation="border" size="sm" /> : "Update"}
             </Button>
           </Modal.Footer>

@@ -96,7 +96,7 @@ const AddDesignation = ({ deptList }: any) => {
     const newData = { ...addData };
     newData[fieldName as keyof typeof newData] = fieldValue;
 
-    setAddData(newData as departmenI);
+    setAddData(newData as any);
   };
 
   return (
@@ -113,7 +113,9 @@ const AddDesignation = ({ deptList }: any) => {
           validationSchema={validationSchema}
           initialValues={{
             name: "",
-            office: ""
+            office: "",
+            level:"",
+            department: ""
           }}
           onSubmit={(values) => {
             handleFormSubmit();
@@ -191,14 +193,14 @@ const AddDesignation = ({ deptList }: any) => {
               </Form.Group>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  // variant="secondary"
                   onClick={() => dispatch(addModalTogal(false))}
                 >
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {/* <Button  type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Add"}
-                </Button>
+                </Button> */}
               </Modal.Footer>
             </Form>
           )}

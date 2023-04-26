@@ -174,14 +174,13 @@ const UpdateOffice = (data: any) => {
               </Form.Group>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
                   onClick={() => dispatch(updateModalTogal(false))}
                 >
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {/* <Button  type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Update"}
-                </Button>
+                </Button> */}
               </Modal.Footer>
             </Form>
           )}

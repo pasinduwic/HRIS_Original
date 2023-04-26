@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addAlertDetails,
   addModalTogal,
-  setRefresh
+  setRefresh,
 } from "../../redux/features/StatusVar";
 import moment from "moment";
 import { Formik } from "formik";
@@ -16,7 +16,7 @@ const validationSchema = yup.object().shape({
   // employee: yup.string().required(),
   leaveType: yup.string().required("Leave type is required!"),
   startDate: yup.string().required("Start data is required!"),
-  endDate: yup.string().required("End date is required!")
+  endDate: yup.string().required("End date is required!"),
   // numberofDays: yup.number().required().positive().integer(),
 });
 
@@ -61,9 +61,9 @@ const AddLeave = () => {
       _id: "642abafa68f698c02802d23b",
       name: "cmb 2",
       location: "Access towers",
-      __v: 0
+      __v: 0,
     },
-    __v: 0
+    __v: 0,
   };
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const AddLeave = () => {
       startDate: "",
       endDate: "",
       numberofDays: 0,
-      status: 0
+      status: 0,
     });
     setDateCount(0);
     return () => {
@@ -90,7 +90,7 @@ const AddLeave = () => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Selected end date is invalid!"
+          message: "Selected end date is invalid!",
         })
       );
     }
@@ -105,7 +105,7 @@ const AddLeave = () => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -114,7 +114,7 @@ const AddLeave = () => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -122,7 +122,7 @@ const AddLeave = () => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
       dispatch(setRefresh(!refreshData));
@@ -131,7 +131,7 @@ const AddLeave = () => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -178,7 +178,7 @@ const AddLeave = () => {
             leaveType: "",
             startDate: "",
             endDate: "",
-            numberofDays: ""
+            numberofDays: "",
           }}
           onSubmit={(values) => {
             handleFormSubmit();
@@ -191,7 +191,7 @@ const AddLeave = () => {
             values,
             touched,
             isValid,
-            errors
+            errors,
           }) => (
             <Form>
               <Form.Group>
@@ -296,15 +296,12 @@ const AddLeave = () => {
               </Form.Group>
 
               <Modal.Footer>
-                <Button
-                  variant="secondary"
-                  onClick={() => dispatch(addModalTogal(false))}
-                >
+                <Button onClick={() => dispatch(addModalTogal(false))}>
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {/* <Button type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Add"}
-                </Button>
+                </Button> */}
               </Modal.Footer>
             </Form>
           )}

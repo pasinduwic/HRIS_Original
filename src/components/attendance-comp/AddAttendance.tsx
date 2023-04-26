@@ -7,7 +7,7 @@ import {
   addAlertDetails,
   addModalTogal,
   setRefresh,
-  updateModalTogal
+  updateModalTogal,
 } from "../../redux/features/StatusVar";
 import moment from "moment";
 import { Formik } from "formik";
@@ -16,7 +16,7 @@ import * as yup from "yup";
 const validationSchema = yup.object().shape({
   employee: yup.string().required(),
   date: yup.string().required(),
-  in: yup.string().required()
+  in: yup.string().required(),
   // out: yup.string().required(),
 });
 interface attendanceI {
@@ -45,7 +45,7 @@ const AddAttendance = ({ employeeList }: any) => {
       in: "",
       out: "",
       OT: 0,
-      month: 0
+      month: 0,
     });
     return () => {
       dispatch(addModalTogal(false));
@@ -67,7 +67,7 @@ const AddAttendance = ({ employeeList }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -76,7 +76,7 @@ const AddAttendance = ({ employeeList }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -84,7 +84,7 @@ const AddAttendance = ({ employeeList }: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
       dispatch(setRefresh(!refreshData));
@@ -93,7 +93,7 @@ const AddAttendance = ({ employeeList }: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -154,9 +154,9 @@ const AddAttendance = ({ employeeList }: any) => {
           validationSchema={validationSchema}
           initialValues={{
             employee: "",
-            data: "",
+            date: "",
             in: "",
-            out: ""
+            out: "",
           }}
           onSubmit={(values) => {
             handleFormSubmit();
@@ -169,7 +169,7 @@ const AddAttendance = ({ employeeList }: any) => {
             values,
             touched,
             isValid,
-            errors
+            errors,
           }) => (
             <Form>
               <Form.Group>
@@ -257,14 +257,14 @@ const AddAttendance = ({ employeeList }: any) => {
               </Form.Group>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  variant="text"
                   onClick={() => dispatch(addModalTogal(false))}
                 >
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {/* <Button  type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Add"}
-                </Button>
+                </Button> */}
               </Modal.Footer>
             </Form>
           )}

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addAlertDetails,
   addModalTogal,
-  setRefresh
+  setRefresh,
 } from "../../redux/features/StatusVar";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -18,7 +18,7 @@ interface departmenI {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  office: yup.string().required()
+  office: yup.string().required(),
 });
 
 const AddDepartment = ({ officeList }: any) => {
@@ -51,7 +51,7 @@ const AddDepartment = ({ officeList }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -60,7 +60,7 @@ const AddDepartment = ({ officeList }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -68,7 +68,7 @@ const AddDepartment = ({ officeList }: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
       dispatch(setRefresh(!refreshData));
@@ -77,7 +77,7 @@ const AddDepartment = ({ officeList }: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -111,7 +111,7 @@ const AddDepartment = ({ officeList }: any) => {
           validationSchema={validationSchema}
           initialValues={{
             name: "",
-            office: ""
+            office: "",
           }}
           onSubmit={(values) => {
             handleFormSubmit();
@@ -124,7 +124,7 @@ const AddDepartment = ({ officeList }: any) => {
             values,
             touched,
             isValid,
-            errors
+            errors,
           }) => (
             <Form>
               <Form.Group>
@@ -167,12 +167,12 @@ const AddDepartment = ({ officeList }: any) => {
               </Form.Group>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  // variant="secondary"
                   onClick={() => dispatch(addModalTogal(false))}
                 >
                   Close
                 </Button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                <Button type="submit" onClick={handleSubmit}>
                   {loader ? <Spinner animation="border" size="sm" /> : "Add"}
                 </Button>
               </Modal.Footer>

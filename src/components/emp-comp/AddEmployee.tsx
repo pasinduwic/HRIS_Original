@@ -7,7 +7,7 @@ import {
   IconButton,
   Step,
   StepLabel,
-  Stepper
+  Stepper,
 } from "@mui/material";
 import { Col, Form, Modal, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ import {
   addAlertDetails,
   addModalTogal,
   setRefresh,
-  updateModalTogal
+  updateModalTogal,
 } from "../../redux/features/StatusVar";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -34,15 +34,15 @@ const validationSchema = yup.object().shape({
   carder: yup.string().required("Employee carder is required!"),
   email: yup.string().required("Email is required!"),
   NIC: yup.string().required("NIC is required!"),
-  marital_status: yup.string().required("Marital status is required!")
+  marital_status: yup.string().required("Marital status is required!"),
 });
 const validationSalarySchema = yup.object().shape({
-  basic: yup.number().required("Basic Salary is required!").positive()
+  basic: yup.number().required("Basic Salary is required!").positive(),
 });
 const validationLeaveSchema = yup.object().shape({
   anual: yup.number().required("Anual leave is required!").positive(),
   casual: yup.number().required("Casual leave is required!").positive(),
-  medical: yup.number().required("Medical leave is required!").positive()
+  medical: yup.number().required("Medical leave is required!").positive(),
 });
 
 //types
@@ -126,7 +126,7 @@ const AddEmployee = ({ empNo }: any) => {
     riligion: "",
     marital_status: 0,
     carder: 0,
-    birthDay: ""
+    birthDay: "",
   });
   const [loader, setLoader] = useState(false);
   const [deptData, setDeptData] = useState([]);
@@ -167,7 +167,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "failed to load data!"
+            message: "failed to load data!",
           })
         );
       }
@@ -208,7 +208,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -217,7 +217,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responce.data.errorSpecified
+            message: responce.data.errorSpecified,
           })
         );
       }
@@ -225,7 +225,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
 
@@ -241,14 +241,14 @@ const AddEmployee = ({ empNo }: any) => {
         net: 0,
         otherAllawance: 0,
         transportAllawance: 0,
-        tax: 0
+        tax: 0,
       } as salaryI);
 
       setLeaveDetails({
         employee: responce.data._id,
         anual: 0,
         casual: 0,
-        medical: 0
+        medical: 0,
       } as leaveI);
       setAddSalary(1);
       dispatch(setRefresh(!refreshData));
@@ -259,7 +259,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -281,7 +281,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -290,7 +290,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responceSalary.data.errorSpecified
+            message: responceSalary.data.errorSpecified,
           })
         );
       }
@@ -298,7 +298,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
 
@@ -311,7 +311,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -333,7 +333,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: "Something went wrong!"
+            message: "Something went wrong!",
           })
         );
       }
@@ -342,7 +342,7 @@ const AddEmployee = ({ empNo }: any) => {
           addAlertDetails({
             status: true,
             type: "error",
-            message: responceLeave.data.errorSpecified
+            message: responceLeave.data.errorSpecified,
           })
         );
       }
@@ -350,7 +350,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "success",
-          message: "Item added successfully!"
+          message: "Item added successfully!",
         })
       );
       setAddSalary(0);
@@ -362,7 +362,7 @@ const AddEmployee = ({ empNo }: any) => {
         addAlertDetails({
           status: true,
           type: "error",
-          message: "Something went wrong!"
+          message: "Something went wrong!",
         })
       );
     } finally {
@@ -423,7 +423,7 @@ const AddEmployee = ({ empNo }: any) => {
       sx={{
         margin: " 10px 10px 100px 10px",
         textAlign: "left",
-        padding: "20px"
+        padding: "20px",
       }}
     >
       <div
@@ -431,12 +431,12 @@ const AddEmployee = ({ empNo }: any) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: "28px"
+          marginBottom: "28px",
         }}
       >
         <h5
           style={{
-            margin: "0"
+            margin: "0",
           }}
         >
           {addSalary === 0
@@ -478,7 +478,7 @@ const AddEmployee = ({ empNo }: any) => {
               marital_status: "",
               carder: "",
               phone_office: "",
-              phone_personal: ""
+              phone_personal: "",
             }}
             onSubmit={(values) => {
               // console.log("received")
@@ -492,7 +492,7 @@ const AddEmployee = ({ empNo }: any) => {
               values,
               touched,
               isValid,
-              errors
+              errors,
             }) => (
               <Form>
                 <Box>
@@ -501,7 +501,7 @@ const AddEmployee = ({ empNo }: any) => {
                       style={{
                         backgroundColor: "whitesmoke",
                         padding: "6px",
-                        marginBottom: "10px"
+                        marginBottom: "10px",
                       }}
                     >
                       Official Details
@@ -857,7 +857,7 @@ const AddEmployee = ({ empNo }: any) => {
                       style={{
                         backgroundColor: "whitesmoke",
                         padding: "6px",
-                        margin: "8px 0"
+                        margin: "8px 0",
                       }}
                     >
                       Emergancy Contact Details
@@ -896,7 +896,7 @@ const AddEmployee = ({ empNo }: any) => {
                       style={{
                         backgroundColor: "whitesmoke",
                         padding: "6px",
-                        margin: "8px 0"
+                        margin: "8px 0",
                       }}
                     >
                       Personal Details
@@ -935,11 +935,11 @@ const AddEmployee = ({ empNo }: any) => {
                         }}
                         size="sm"
                         name="brithDay"
-                        isInvalid={!!errors.brithDay}
+                        // isInvalid={!!errors.brithDay}
                       />
-                      <Form.Control.Feedback type="invalid">
+                      {/* <Form.Control.Feedback type="invalid">
                         {errors.brithDay}
-                      </Form.Control.Feedback>
+                      </Form.Control.Feedback> */}
                     </Form.Group>
                   </Row>
                   <Row>
@@ -995,9 +995,9 @@ const AddEmployee = ({ empNo }: any) => {
                   </Row>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  <Button variant="primary" onClick={handleSubmit}>
+                  {/* <Button  onClick={handleSubmit}>
                     {loader ? <Spinner animation="border" size="sm" /> : "Save"}
-                  </Button>
+                  </Button> */}
                 </Box>
               </Form>
             )}
@@ -1009,7 +1009,7 @@ const AddEmployee = ({ empNo }: any) => {
           <Formik
             validationSchema={validationSalarySchema}
             initialValues={{
-              basic: ""
+              basic: "",
             }}
             onSubmit={(values) => {
               handelSalarySubmit();
@@ -1022,7 +1022,7 @@ const AddEmployee = ({ empNo }: any) => {
               values,
               touched,
               isValid,
-              errors
+              errors,
             }) => (
               <Form>
                 <Row>
@@ -1161,14 +1161,14 @@ const AddEmployee = ({ empNo }: any) => {
                 </Row>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                   <Button
-                    variant="secondary"
+                    // variant="secondary"
                     onClick={addSalary === 1 ? handelSkip : handelClose}
                   >
                     Skip
                   </Button>
-                  <Button variant="primary" onClick={handleSubmit}>
+                  {/* <Button  onClick={handleSubmit}>
                     {loader ? <Spinner animation="border" size="sm" /> : "Save"}
-                  </Button>
+                  </Button> */}
                 </Box>
               </Form>
             )}
@@ -1182,7 +1182,7 @@ const AddEmployee = ({ empNo }: any) => {
             initialValues={{
               anual: "",
               casual: "",
-              medical: ""
+              medical: "",
             }}
             onSubmit={(values) => {
               handelLeaveSubmit();
@@ -1195,7 +1195,7 @@ const AddEmployee = ({ empNo }: any) => {
               values,
               touched,
               isValid,
-              errors
+              errors,
             }) => (
               <Form>
                 <Row>
@@ -1262,9 +1262,9 @@ const AddEmployee = ({ empNo }: any) => {
                       you to initialize details at this satege!
                     </p>
                   </div>
-                  <Button variant="primary" onClick={handleSubmit}>
+                  {/* <Button  onClick={handleSubmit}>
                     {loader ? <Spinner animation="border" size="sm" /> : "Save"}
-                  </Button>
+                  </Button> */}
                 </Box>
               </Form>
             )}

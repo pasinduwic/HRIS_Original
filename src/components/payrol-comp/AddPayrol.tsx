@@ -466,13 +466,13 @@ const AddPayrol = ({ empList }: any) => {
                     </Form.Control.Feedback>
                   </Form.Group>
                 </Row>
-                <Button variant="outlined" onClick={handleSubmit}>
+                {/* <Button variant="outlined" onClick={handleSubmit}>
                   {!loader ? (
                     "Calculate Salary"
                   ) : (
                     <Spinner animation="border" size="sm" />
                   )}
-                </Button>
+                </Button> */}
               </>
             )}
             {/* salary */}
